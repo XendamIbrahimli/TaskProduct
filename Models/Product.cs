@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Core.Models
 {
-    internal class Product
+    public class Product
     {
         public int Id { get; set; }
         private static int _id { get; set; }
@@ -36,14 +36,8 @@ namespace Core.Models
             set 
             { 
                 if(value<0)
-                {
-                    throw new PriceMustBeGratherThanZeroException("Price cannot be less than 0.");
-                }
-                else
-                {
-                    _price = value;
-                }
-
+                    throw new PriceMustBeGratherThanZeroException();
+                _price = value;
             } 
         }
 

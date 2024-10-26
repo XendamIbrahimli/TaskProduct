@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.Models
 {
-    internal class Store
+    public class Store
     {
         Product[] products;
 
@@ -25,15 +25,23 @@ namespace Core.Models
 
         public void RemoveProductByNo(int no)
         {
-            Product[] newArray=new Product[products.Length];
+            int id = 0;
+            Product[] newArray=new Product[products.Length-1];
             for(int i=0; i<products.Length; i++)
             {
                 if (products[i].Id != no)
                 {
-                    newArray[i] = products[i];
-                    Console.WriteLine($"ID:{newArray[i].Id}, Name:{newArray[i].Name}, Price:{newArray[i].Price}");
+                    newArray[id] = products[i];
+                    id++;
+                    
                 }
 
+            }
+            products = newArray;
+
+            foreach(Product product in products)
+            {
+                Console.WriteLine($"Name: {product.Name}, Price: {product.Price}, Type: {product.ProductType}");
             }
 
         }
@@ -54,12 +62,14 @@ namespace Core.Models
         public Product[] FilterProductsByType(Types type)
         {
             Product[] filteredArray = new Product[products.Length];
-            for(int i=0; i<products.Length; ++i)
+            int h = 0;
+            for(int i=0; i<products.Length; i++)
             {
                 if (products[i].ProductType == type)
                 {
-                    filteredArray[i] = products[i];
-                    return filteredArray;
+                    filteredArray[h] = products[i];
+                    h++;
+                    
                 }
             }
             return filteredArray;

@@ -8,7 +8,8 @@ namespace Core.Helper.Exceptions
 {
     public class PriceMustBeGratherThanZeroException:Exception
     {
-        public PriceMustBeGratherThanZeroException(string message):base(message) 
+
+        public PriceMustBeGratherThanZeroException():base("Price must be greater than zero.") 
         { 
 
         }

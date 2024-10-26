@@ -8,7 +8,7 @@ namespace Core.Helper.Enums
 {
     public enum Types
     {
-        Baker, 
+        Baker=1, 
         Drink, 
         Meat, 
         Diary
